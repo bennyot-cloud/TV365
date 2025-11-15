@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>TV365 - טלוויזיה חכמה ב 300 ש"ח לשנה</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TV365 - כל ערוצי הטלוויזיה, סרטים, סדרות וספורט ב 300 ש"ח לשנה בלבד. ללא התחייבות, ללא ממיר, עובד על כל טלוויזיה חכמה.">
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --primary: #3b82f6;
+      --primary-soft: rgba(59,130,246,0.12);
+      --accent: #22c55e;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
+      --shadow-small: 0 10px 25px rgba(0,0,0,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 10%, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(3,7,18,0.9), rgba(3,7,18,0.75), transparent);
+      border-bottom: 1px solid rgba(31,41,55,0.7);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #38bdf8, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-small);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-text-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.6);
+      color: #bbf7d0;
+    }
+
+    .btn-sm-outline {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      font-size: 12px;
+      background: rgba(15,23,42,0.8);
+      cursor: pointer;
+    }
+
+    .btn-sm-outline:hover {
+      background: rgba(30,64,175,0.82);
+      border-color: rgba(191,219,254,0.9);
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 26px;
+      margin-top: 26px;
+      align-items: center;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(55,65,81,0.9);
+      font-size: 11px;
+      color: var(--muted);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .hero-tagline span.highlight {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .hero-title {
+      font-size: 30px;
+      line-height: 1.15;
+      margin: 0 0 10px;
+    }
+
+    .hero-title span.brand {
+      color: #60a5fa;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 14px;
+    }
+
+    .hero-pricing-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .price-box {
+      padding: 10px 14px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 0 0, rgba(59,130,246,0.25), rgba(15,23,42,0.96));
+      border: 1px solid rgba(37,99,235,0.8);
+      box-shadow: var(--shadow-small);
+    }
+
+    .price-main {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .price-main span.small {
+      font-size: 14px;
+      font-weight: 500;
+      color: #cbd5f5;
+    }
+
+    .price-compare {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .save-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(22,163,74,0.16);
+      border: 1px dashed rgba(34,197,94,0.6);
+      font-size: 11px;
+      color: #bbf7d0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn-primary {
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(to left, #2563eb, #4f46e5);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      padding: 10px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.8);
+      color: var(--text);
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(31,41,55,0.96);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* HERO VISUAL */
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 10% 0, rgba(96,165,250,0.22), rgba(15,23,42,0.98));
+      border: 1px solid rgba(55,65,81,0.9);
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hero-card-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(148,163,184,0.8);
+      color: var(--muted);
+    }
+
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .channel-tile {
+      border-radius: 16px;
+      background: rgba(15,23,42,0.92);
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 8px;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .channel-label {
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    .channel-tag {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .channel-pill {
+      align-self: flex-start;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 9px;
+      background: rgba(59,130,246,0.16);
+      color: #bfdbfe;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-card-meter {
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.8);
+      overflow: hidden;
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .hero-card-meter-fill {
+      width: 80%;
+      height: 100%;
+      background: linear-gradient(to left, #22c55e, #a3e635);
+    }
+
+    .floating-badge {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.92);
+      border: 1px solid rgba(148,163,184,0.8);
+      font-size: 10px;
+      color: #e5e7eb;
+    }
+
+    /* FEATURES */
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card {
+      border-radius: var(--radius-lg);
+      background: rgba(15,23,42,0.95);
+      border: 1px solid var(--border);
+      padding: 14px;
+      font-size: 13px;
+      box-shadow: var(--shadow-small);
+    }
+
+    .feature-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 8px;
+      background: rgba(37,99,235,0.16);
+    }
+
+    .feature-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .feature-text {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* HOW IT WORKS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .step-card {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(to top, rgba(15,23,42,0.96), rgba(17,24,39,0.96));
+      border: 1px solid var(--border);
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-number {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-size: 26px;
+      font-weight: 700;
+      color: rgba(55,65,81,0.25);
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-text {
+      color: var(--muted);
+    }
+
+    /* PRICING */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 10% 0, rgba(59,130,246,0.3), rgba(15,23,42,0.97));
+      border: 1px solid rgba(37,99,235,0.9);
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .pricing-main-price {
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .pricing-main-price span {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 0 10px;
+      font-size: 12px;
+    }
+
+    .pricing-tagline {
+      color: #e5e7eb;
+    }
+
+    .pricing-save {
+      color: #bbf7d0;
+      font-size: 11px;
+      background: rgba(22,163,74,0.22);
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid rgba(34,197,94,0.7);
+    }
+
+    .pricing-list {
+      margin: 10px 0 12px;
+      padding-right: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pricing-list li {
+      margin-bottom: 4px;
+    }
+
+    .pricing-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .legal-card {
+      border-radius: var(--radius-lg);
+      background: rgba(15,23,42,0.95);
+      border: 1px solid var(--border);
+      padding: 14px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .legal-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+
+    .legal-text strong {
+      color: #e5e7eb;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-xl);
+      background: rgba(15,23,42,0.98);
+      border: 1px solid var(--border);
+      padding: 16px;
+      box-shadow: var(--shadow-small);
+    }
+
+    .contact-label {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .contact-input,
+    .contact-textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(51,65,85,0.9);
+      background: rgba(15,23,42,0.96);
+      padding: 9px 11px;
+      color: var(--text);
+      font-size: 13px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    .contact-input:focus,
+    .contact-textarea:focus {
+      border-color: rgba(59,130,246,0.95);
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.5);
+    }
+
+    .contact-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .contact-help {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .contact-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .contact-meta strong {
+      color: #e5e7eb;
+    }
+
+    .contact-highlight {
+      border-radius: var(--radius-lg);
+      background: rgba(15,23,42,0.96);
+      border: 1px dashed rgba(59,130,246,0.8);
+      padding: 12px;
+      font-size: 12px;
+    }
+
+    .contact-highlight-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-highlight ul {
+      margin: 6px 0 0;
+      padding-right: 16px;
+      color: var(--muted);
+    }
+
+    .whatsapp-btn {
+      width: 100%;
+      margin-top: 4px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(to left, #22c55e, #16a34a);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .whatsapp-btn:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .error-text {
+      color: var(--danger);
+      font-size: 11px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .faq-item {
+      border-radius: var(--radius-lg);
+      background: rgba(15,23,42,0.96);
+      border: 1px solid var(--border);
+      padding: 12px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(31,41,55,0.9);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      .hero,
+      .pricing-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        margin-top: 18px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .header-inner {
+        padding-inline: 12px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .features-grid,
+      .steps,
+      .faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .section {
+        margin-top: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-cta .badge-pill {
+        display: none;
+      }
+
+      .hero-pricing-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .whatsapp-btn {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">TV</div>
+      <div>
+        <div class="logo-text-title">TV365</div>
+        <div class="logo-text-sub">טלוויזיה חכמה, מחיר אחד בשנה</div>
+      </div>
+    </div>
+    <div class="header-cta">
+      <div class="badge-pill">ממוצע חיסכון מעל 3,000 ש"ח בשנה</div>
+      <button class="btn-sm-outline" onclick="scrollToSection('contact')">אני רוצה להצטרף</button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-tagline">
+        <span>חדש בישראל</span>
+        <span>•</span>
+        <span class="highlight">טלוויזיה ב 300 ש"ח לשנה</span>
+      </div>
+      <h1 class="hero-title">
+        כל הטלוויזיה שלך, במקום אחד,  
+        <span class="brand">בלי לשלם 300 בחודש</span>.
+      </h1>
+      <p class="hero-subtitle">
+        TV365 מחברת אותך למערכת טלוויזיה חכמה מבוססת IPTV. אלפי ערוצים, סרטים, סדרות וספורט, בתשלום שנתי אחד בלבד.
+        ללא התחייבות, ללא ממיר, עובד על רוב הטלוויזיות החכמות ומכשירי האנדרואיד.
+      </p>
+
+      <div class="hero-pricing-row">
+        <div class="price-box">
+          <div class="price-main">
+            300 ₪ <span class="small">לשנה אחת</span>
+          </div>
+          <div class="price-compare">
+            במקום 300 ₪ בחודש לחברות הטלוויזיה.
+          </div>
+        </div>
+        <div class="save-pill">
+          חיסכון שנתי אופייני: 2,400 - 3,000 ₪ למשפחה
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="scrollToSection('contact')">
+          הצטרפות עכשיו
+          <span>🚀</span>
+        </button>
+        <button class="btn-ghost" onclick="scrollToSection('faq')">
+          יש לי עוד שאלות
+          <span>❓</span>
+        </button>
+      </div>
+
+      <div class="hero-note">
+        אין התחייבות. התשלום לשנה אחת מראש. השירות כולל חיבור והדרכה למערכת IPTV חיצונית.
+      </div>
+    </div>
+
+    <div class="hero-card" aria-hidden="true">
+      <div class="hero-card-header">
+        <div>
+          <div class="hero-card-title">מה תקבל עם TV365</div>
+          <div style="font-size:11px;color:#cbd5f5;">מבט מהיר על הערוצים והנוחות</div>
+        </div>
+        <div class="hero-card-pill">צפייה מיידית לאחר ההתקנה</div>
+      </div>
+
+      <div class="channels-grid">
+        <div class="channel-tile">
+          <div class="channel-label">ערוצים חיים</div>
+          <div class="channel-tag">אלפי ערוצים מרחבי העולם, כולל חדשות, בידור וילדים.</div>
+          <div class="channel-pill">כולל ערוצי HD</div>
+        </div>
+        <div class="channel-tile">
+          <div class="channel-label">ספורט</div>
+          <div class="channel-tag">ערוצי ספורט בינלאומיים מובילים, משחקים בשידור חי.</div>
+          <div class="channel-pill">לחובבי ספורט</div>
+        </div>
+        <div class="channel-tile">
+          <div class="channel-label">VOD</div>
+          <div class="channel-tag">מאות סרטים וסדרות לצפייה בכל רגע שתרצה.</div>
+          <div class="channel-pill">זמין 24/7</div>
+        </div>
+      </div>
+
+      <div class="hero-card-footer">
+        <div>איכות צפייה</div>
+        <div class="hero-card-meter">
+          <div class="hero-card-meter-fill"></div>
+        </div>
+        <div>Full HD</div>
+      </div>
+
+      <div class="floating-badge">
+        💡 טיפ: אפשר להתקין גם על סטרימר פשוט ולחבר לכל טלוויזיה ישנה.
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <h2 class="section-title">למה לבחור ב TV365</h2>
+    <p class="section-subtitle">
+      מערכת טלוויזיה חכמה במחיר שפוי. בלי התחייבות, בלי טכנאים שמגיעים בין 8 ל 21, ובלי לשלם כפול סתם.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💸</div>
+        <div class="feature-title">חוסכים אלפי שקלים בשנה</div>
+        <div class="feature-text">
+          במקום לשלם מאות שקלים כל חודש, משלמים מחיר אחד לשנה. משפחות רבות חוסכות מעל 3,000 ש"ח בשנה על טלוויזיה בלבד.
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📺</div>
+        <div class="feature-title">עובד על רוב הטלוויזיות</div>
+        <div class="feature-text">
+          מתאים לטלוויזיות חכמות רבות, סטרימרים אנדרואיד, טאבלטים וטלפונים. אין צורך בממיר נוסף, הכל דרך אפליקציה.
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">חיבור מהיר</div>
+        <div class="feature-text">
+          אחרי התשלום, מקבלים הוראות התקנה פשוטות וברורות. ברוב המקרים ניתן להתחיל לצפות כבר באותו היום.
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎬</div>
+        <div class="feature-title">ערוצים, סרטים וסדרות</div>
+        <div class="feature-text">
+          גישה לערוצים חיים, ערוצי ספורט בינלאומיים, ערוצי ילדים וגם ספריית VOD עם סרטים וסדרות.
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🧑‍💻</div>
+        <div class="feature-title">תמיכה בעברית</div>
+        <div class="feature-text">
+          לא מסתדרים? יש תקלה? ניתן לפנות אלינו בוואטסאפ, ואנו נעזור בהתקנה ובהגדרות ככל הניתן.
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-title">תשלום שנתי, בלי התחייבות</div>
+        <div class="feature-text">
+          משלמים לשנה אחת מראש. אם מרוצים, מחדשים לשנה נוספת. בלי קנסות יציאה, בלי חוזים מורכבים.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <h2 class="section-title">איך זה עובד בפועל</h2>
+    <p class="section-subtitle">
+      כל התהליך פשוט, דיגיטלי וברור. אין טכנאי, אין ממיר, אין חפירות. הכל אונליין.
+    </p>
+
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-title">ממלאים פרטים קצרים</div>
+        <div class="step-text">
+          משאירים שם, טלפון ואימייל, או פונים אלינו ישירות בוואטסאפ. נתקשר או נכתוב לכם לגבי שאלות ותיאום.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-title">מבצעים תשלום</div>
+        <div class="step-text">
+          התשלום מתבצע בביט, פייבוקס או העברה בנקאית. לאחר אישור תשלום אנו מפעילים עבורכם את המנוי לשנה.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-title">מקבלים התקנה ותמיכה</div>
+        <div class="step-text">
+          תקבלו מאיתנו פרטי גישה והוראות התקנה מסודרות. במידת הצורך נעזור גם בשיתוף מסך והנחיה מרחוק.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING + LEGAL -->
+  <section class="section" id="pricing">
+    <h2 class="section-title">כמה זה עולה</h2>
+    <p class="section-subtitle">
+      תשלום אחד לשנה. ללא התחייבות, ללא הפתעות בחשבון, ללא עלויות נוספות מאיתנו.
+    </p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-main-price">
+          300 ₪ <span>לשנה</span>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-tagline">טלוויזיה חכמה למשפחה שלמה</div>
+          <div class="pricing-save">פחות מהעלות של חודש אחד אצל חברות הטלוויזיה</div>
+        </div>
+        <ul class="pricing-list">
+          <li>גישה למערכת טלוויזיה חכמה מבוססת IPTV לשנה.</li>
+          <li>ערוצים חיים, ערוצי ספורט בינלאומיים, ערוצי ילדים ו VOD.</li>
+          <li>התקנה והנחיה ראשונית בעברית.</li>
+          <li>תמיכה טכנית בסיסית בוואטסאפ בתקופת המנוי.</li>
+        </ul>
+        <button class="btn-primary" onclick="scrollToSection('contact')">
+          רוצה להתחיל ב 300 ₪ לשנה
+        </button>
+        <div class="pricing-note">
+          אפשר לשלם בביט, פייבוקס או העברה. לאחר התשלום נשלח לכם פרטי גישה והנחיות ברורות.
+        </div>
+      </div>
+
+      <div class="legal-card">
+        <div class="legal-title">הבהרה משפטית</div>
+        <div class="legal-text">
+          <p>
+            <strong>TV365 אינה מפעילה שרתי שידור ואינה בעלת זכויות בתכנים.</strong>
+          </p>
+          <p>
+            השירות שאנו מספקים הוא שירות חיבור, התקנה ותמיכה למערכת IPTV חיצונית (ספק צד שלישי),
+            אשר פועלת על שרתים מחוץ לישראל. אנו לא שומרים, לא משדרים ולא מאחסנים תכנים באתר זה.
+          </p>
+          <p>
+            השימוש בשירות נעשה באחריות הלקוח בלבד. מומלץ לבדוק את הדין החל במקום מגוריכם לגבי שימוש במערכות מבוססות IPTV.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <h2 class="section-title">השאירו פרטים ונחזור אליכם</h2>
+    <p class="section-subtitle">
+      מלאו את הפרטים הקצרים או לחצו על כפתור הוואטסאפ. בדרך כלל חוזרים באותו היום או ביום העסקים הבא.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <label class="contact-label" for="name">שם מלא</label>
+          <input id="name" name="name" class="contact-input" placeholder="איך לפנות אליך?" required>
+
+          <label class="contact-label" for="phone">טלפון</label>
+          <input id="phone" name="phone" class="contact-input" placeholder="מספר נייד לחזרה" required>
+
+          <label class="contact-label" for="email">אימייל (לא חובה)</label>
+          <input id="email" name="email" type="email" class="contact-input" placeholder="רק אם נוח לך לקבל הוראות גם באימייל">
+
+          <label class="contact-label" for="message">מה חשוב לך לדעת?</label>
+          <textarea id="message" name="message" class="contact-textarea" placeholder="לדוגמה: איזה מכשיר יש בבית? מה חשוב לך שיהיה בערוצים?"></textarea>
+
+          <div class="contact-help">
+            בלחיצה על "שליחה בוואטסאפ" ייפתח צ'אט חדש בוואטסאפ עם כל הפרטים שמילאת.
+          </div>
+
+          <button type="submit" class="whatsapp-btn">
+            לשלוח פרטים בוואטסאפ
+            <span>📲</span>
+          </button>
+
+          <div id="formError" class="error-text">
+            יש למלא שם וטלפון לפחות.
+          </div>
+        </form>
+
+        <div class="contact-meta">
+          <strong>שעות מענה:</strong> בדרך כלל 9:00 - 21:00 בימי חול. בסופי שבוע המענה עלול להתעכב מעט.
+        </div>
+      </div>
+
+      <div class="contact-highlight">
+        <div class="contact-highlight-title">אפשר גם לפנות ישירות</div>
+        <p style="margin:4px 0 6px;">
+          אם נוח לך יותר, אפשר פשוט לפתוח וואטסאפ ולכתוב לנו:
+        </p>
+        <ul>
+          <li>שם מלא</li>
+          <li>כמה טלוויזיות יש בבית?</li>
+          <li>על איזה מכשיר תרצה להתקין? (טלוויזיה חכמה, סטרימר, טלפון)</li>
+        </ul>
+        <p style="margin-top:6px;">
+          לאחר מכן נחזור אליך עם כל הפרטים, הסבר ותיאום תשלום.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <h2 class="section-title">שאלות נפוצות</h2>
+    <p class="section-subtitle">
+      אם אתה חושב על משהו, כנראה שמישהו כבר שאל לפני. ריכזנו כמה תשובות קצרות.
+    </p>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">האם צריך טכנאי שיגיע הביתה?</div>
+        <div class="faq-a">
+          לא. כל ההתקנה מתבצעת אונליין, דרך אפליקציה פשוטה. תקבל הוראות ברורות, ובמידת הצורך נעזור גם בהסבר נוסף בוואטסאפ.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">זה עובד על כל טלוויזיה?</div>
+        <div class="faq-a">
+          זה עובד על רוב הטלוויזיות החכמות וסטרימרים מבוססי אנדרואיד. אם יש לך ספק, פשוט תכתוב לנו איזה דגם טלוויזיה או סטרימר יש לך, ונגיד אם זה מתאים.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">מה קורה אם יש תקלה?</div>
+        <div class="faq-a">
+          ניתן לפנות אלינו בוואטסאפ, ואנו נעזור ככל האפשר. חשוב לזכור שחלק מהתקלות יכול להיות קשור לאינטרנט הביתי שלך, לאיכות הווי-פיי וכדומה.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">האם אפשר לבטל באמצע?</div>
+        <div class="faq-a">
+          התשלום הוא לשנה מראש, כמו קניית שירות דיגיטלי. אין התחייבות לשנים נוספות. אם מרוצים, פשוט מחדשים לשנה הבאה.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">האם אתם חברת טלוויזיה?</div>
+        <div class="faq-a">
+          לא. אנו לא חברת טלוויזיה ולא מפעילים שרתים. אנו מספקים שירות חיבור, התקנה ותמיכה למערכת IPTV חיצונית שפועלת על שרתים בחו"ל.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">איך משלמים?</div>
+        <div class="faq-a">
+          ניתן לשלם בביט, פייבוקס או העברה בנקאית. לאחר התשלום נשלח לכם פרטי גישה והוראות התקנה.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="year"></span> TV365. כל הזכויות שמורות.</div>
+    <div class="footer-links">
+      <a href="#features">יתרונות</a>
+      <a href="#pricing">מחיר</a>
+      <a href="#contact">צור קשר</a>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // שנה נוכחית בפוטר
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // גלילה רכה לסקשן
+  function scrollToSection(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  // טיפול בטופס ושליחת מידע לוואטסאפ
+  function handleSubmit(event) {
+    event.preventDefault();
+    var name = document.getElementById("name").value.trim();
+    var phone = document.getElementById("phone").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var message = document.getElementById("message").value.trim();
+    var errorEl = document.getElementById("formError");
+
+    if (!name || !phone) {
+      errorEl.style.display = "block";
+      errorEl.textContent = "יש למלא לפחות שם וטלפון.";
+      return;
+    } else {
+      errorEl.style.display = "none";
+    }
+
+    // כאן מחליפים למספר וואטסאפ האמיתי שלך בפורמט בינלאומי ללא 0 בתחילת המספר
+    // לדוגמה 972501234567
+    var whatsappNumber = "972500000000"; // להחליף למספר שלך
+
+    var text = "TV365 - בקשת הצטרפות חדשה%0A%0A" +
+      "שם: " + encodeURIComponent(name) + "%0A" +
+      "טלפון: " + encodeURIComponent(phone) + "%0A";
+
+    if (email) {
+      text += "אימייל: " + encodeURIComponent(email) + "%0A";
+    }
+    if (message) {
+      text += "%0Aמה חשוב ללקוח:%0A" + encodeURIComponent(message);
+    }
+
+    var url = "https://wa.me/" + whatsappNumber + "?text=" + text;
+    window.open(url, "_blank");
+  }
+</script>
+
+</body>
+</html>
